@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <script src="./Scripts/json.js"></script>
+      </head>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .text{
+            width: 100%;
+            height: 30px;
+            font-size: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+    <body>
+        <center>
+            <div>
+                <button id="b_l" style="font-size: larger; margin: 1%;">Links</button>
+                <button id="b_ss" style="font-size: larger; margin: 1%;">Screenshots</button>
+            </div>
+            <div id="ljson" style="width: 90%;">
+                <input class="text" id="info" type="text" placeholder="Info">
+                <section class="text" style="text-align: left;">
+                    <label style="font-size: large;">Player:</label>
+                    <select id="player" style="height: 100%; margin-left: 1%; font-size: 15px;">
+                        <option style="font-size: 15px;" value="REAL">Default Player</option>
+                        <option style="font-size: 15px;" value="WEB">External Web Player</option>
+                        <option style="font-size: 15px;" value="WSB">Web Stream Player</option>
+                    </select>
+                </section>
+                <input class="text" id="watch" type="text" placeholder="Watch">
+                <input class="text" id="download" type="text" placeholder="Download">
+                <button id="b_add" style="width: 75px; height: 30px; margin: 3px;" onclick="arrange()">ADD</button>
+                <textarea class="text" id="links" style="height: 100px; font-size: large;"></textarea>
+                <button id="b_json" style="width: 150px; height: 30px; margin: 3px;" onclick="linkjson()">Get Links JSON</button>
+                <textarea class="text" id="json" style="height: 100px; font-size: large;"></textarea>
+                <button style="width: 75px; height: 30px; margin: 3px;" onclick="navigator.clipboard.writeText(json.value)">Copy</button>
+            </div>
+            <div id="ssjson" style="width: 90%;">
+                <input class="text" id="ss1" type="text" placeholder="Screenshot 1">
+                <input class="text" id="ss2" type="text" placeholder="Screenshot 2">
+                <input class="text" id="ss3" type="text" placeholder="Screenshot 3">
+                <input class="text" id="ss4" type="text" placeholder="Screenshot 4">
+                <input class="text" id="ss5" type="text" placeholder="Screenshot 5">
+                <button id="b_json" style="width: 175px; height: 30px; margin: 3px;" onclick="ssmap()">Get Screenshot Map</button>
+                <textarea class="text" id="map" style="height: 100px; font-size: large;"></textarea>
+                <button style="width: 75px; height: 30px; margin: 3px;" onclick="navigator.clipboard.writeText(map.value)">Copy</button>
+            </div>
+        </center>
+        <script>
+            document.getElementById('ljson').style.display='none';
+            document.getElementById('ssjson').style.display='none';
+            document.getElementById('b_l').addEventListener('click',Event=>{
+                    document.getElementById('ljson').style.display='block';
+                    document.getElementById('ssjson').style.display='none';
+                });
+            document.getElementById('b_ss').addEventListener('click',Event=>{
+                document.getElementById('ssjson').style.display='block';
+                document.getElementById('ljson').style.display='none';
+                });
+        </script>
+    </body>

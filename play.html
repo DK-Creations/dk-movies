@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>DK Movies Web Stream</title>
+  <link rel="stylesheet" href="./play.css">
+</head>
+<body>
+  <div id="player">
+    <video id="video">
+    </video>
+    <div id="controls">
+      <div id="top">
+        <p id="title"></p>
+        <img id="lock" src="./icons/unlocked.png">
+      </div>
+      <div id="middle">
+        <center>
+          <img id="reverse" src="./icons/reverse_10.png">
+          <img id="pause" src="./icons/pause.png">
+          <img id="play" src="./icons/play.png">
+          <img id="forward" src="./icons/forward_10.png">
+        </center>
+      </div>
+      <div id="bottom">
+        <div id="bottom1">
+          <progress id="progressbar" value="0" min="0" max="10"></progress>
+          <input id="progressthumb" type="range" value="0" min="0" max="10">
+        </div>
+        <div id="bottom2">
+          <p id="duration">0:00:00 / 0:00:00</p>
+          <img id="fullscreen" src="./icons/screen1.png">
+        </div>
+      </div>
+    </div>
+    <script src="./Scripts/play.js"></script>
+    <script >
+      const url = new URL(window.location.href).searchParams.get("url");
+      const id = new URL(window.location.href).searchParams.get("id");
+      const rqst = "https://script.google.com/macros/s/AKfycby530UisjDAG6sVDO-dd39UEb8Vp4Hvvktw-HREWtaXssZOsBpCQO-OR9y06YSv4t-H/exec?id="+id;
+      if(url==null) {
+        var db = new XMLHttpRequest();
+        db.open("GET",rqst,false);
+        db.send();
+        document.getElementById("video").src=db.responseText;
+      } else {
+        document.getElementById("video").src=url;
+      }
+      document.head.getElementsByTagName('title')[0].innerText=video.src.substring(video.src.lastIndexOf('/')+1);
+      title.innerHTML=video.src.substring(video.src.lastIndexOf('/')+1);
+  </script>
+</body>
+</html>
